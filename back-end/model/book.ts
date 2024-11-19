@@ -1,5 +1,3 @@
-import { Review } from './review';
-
 export class Book {
     private isbn: number;
     private title: string;
