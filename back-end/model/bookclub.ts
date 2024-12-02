@@ -15,7 +15,7 @@ export class Bookclub {
         name: string;
         description?: string;
         members?: User[];
-        books: Book[];
+        books?: Book[];
     }) {
         this.validate(bookclub);
 
