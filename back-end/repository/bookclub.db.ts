@@ -15,7 +15,7 @@ const getBookclubByName = ( name: string ): Bookclub | undefined => {
 
 const getBookclubById = ( id: number ): Bookclub | undefined => {
     return bookclubs.find((bookclub) => bookclub.getId() === id);
-} 
+}; 
 
 export default {
     createBookclub,
