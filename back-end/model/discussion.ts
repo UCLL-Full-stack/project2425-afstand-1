@@ -51,10 +51,6 @@ export class Discussion {
         if (!discussion.description) {
             throw new Error('Description is required')
         }
-
-        if (!discussion.title) {
-            throw new Error('Title is required')
-        }
     }
 
     equals(discussion: Discussion): boolean {
