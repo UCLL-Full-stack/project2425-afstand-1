@@ -27,7 +27,7 @@
  *      BookclubInput:
  *          type: object
  *          properties:
- *            Creator:
+ *            creator:
  *              type: object
  *              properties:
  *                  id:
