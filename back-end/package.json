@@ -1,7 +1,7 @@
 {
-    "name": "courses_api",
+    "name": "bookclubs_api",
     "version": "1.0.0",
-    "description": "Courses API",
+    "description": "Bookclubs API",
     "author": "johanpck",
     "license": "ISC",
     "main": "app.ts",
