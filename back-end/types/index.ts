@@ -8,7 +8,7 @@ type UserInput = {
 };
 
 type BookInput = {
-    isbn: number;
+    isbn: string;
     title: string;
     author: string;
     year: number;
@@ -22,7 +22,7 @@ type BookclubInput = {
     name: string;
     description: string;
     members?: UserInput[];
-    book?: BookInput[];
+    books?: BookInput[];
 };
 
 type DiscussionInput = {

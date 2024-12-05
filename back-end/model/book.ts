@@ -1,5 +1,5 @@
 export class Book {
-    private isbn: number;
+    private isbn: string;
     private title: string;
     private author: string;
     private year?: number;
@@ -7,7 +7,7 @@ export class Book {
     private description: string;
 
     constructor(book: {
-        isbn: number;
+        isbn: string;
         title: string;
         author: string;
         year?: number;
@@ -24,8 +24,8 @@ export class Book {
         this.description = book.description;
     }
 
-    validate(book: { isbn: number; title: string; author: string; year?: number; pages?: number; description: string;}) {
-        if (!book.isbn.toString().trim) {
+    validate(book: { isbn: string; title: string; author: string; year?: number; pages?: number; description: string;}) {
+        if (!book.isbn.trim) {
             throw new Error('ISBN is required');
         }
         if (!book.title.trim()) {
@@ -46,12 +46,12 @@ export class Book {
             throw new Error('Pages must be positive')
         }
 
-        if (book.isbn.toString().length != 13) {
-            throw new Error('ISBN should consist of 13 digits')
+        if (!/^(978|979)\d{10}$/.test(book.isbn)) {
+            throw new Error('ISBN should be a 13-digit number starting with 978 or 979');
         }
     }
 
-    getIsbn(): number {
+    getIsbn(): string {
         return this.isbn;
     }
 
@@ -64,11 +64,11 @@ export class Book {
     }
 
     getYear(): number | undefined {
-        return this.year
+        return this.year;
     }
 
     getPages(): number | undefined {
-        return this.pages
+        return this.pages;
     }
 
     getDescription (): string {
