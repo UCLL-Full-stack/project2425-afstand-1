@@ -23,7 +23,17 @@ const createBookclub = ({
 
 const getAllBookclubs = (): Bookclub[] => bookclubDb.getAllBookclubs();
 
+const getBookclubByName = (name: string): Bookclub | undefined => {
+    return bookclubDb.getBookclubByName(name);
+};
+
+const getBookclubById = (id: number): Bookclub | undefined => {
+    return bookclubDb.getBookclubById(id);
+};
+
 export default { 
     createBookclub,
     getAllBookclubs,
+    getBookclubByName,
+    getBookclubById,
 };
