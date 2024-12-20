@@ -78,9 +78,11 @@ export class Bookclub {
     }
  
     addBookToBookclub(book: Book) {
-        if (!this.books.includes(book)) {
-            this.books.push(book);
+        const findBook = this.books.find((b) => b.getIsbn() === book.getIsbn());
+        if (findBook) {
+            throw new Error('Book has already been assigned to this bookclub.');
         }
+        this.books.push(book);
     }
 
     equals(bookclub: Bookclub): boolean {

@@ -40,7 +40,7 @@
  */
 
 import express, { NextFunction, Request, Response } from 'express';
-import { BookclubInput } from '../types';
+import { BookclubInput} from '../types';
 import bookclubService from '../service/bookclub.service';
 
 const bookclubRouter = express.Router();
@@ -80,6 +80,18 @@ bookclubRouter.post('/', async ( req:Request, res: Response, next: NextFunction 
         const result = await bookclubService.createBookclub(bookclub);
         res.status(200).json(result);
     } catch (error) {
+        next(error);
+    }
+}); 
+
+bookclubRouter.post('/addBook/:bookclubId/:bookIsbn', async ( req:Request, res: Response, next: NextFunction ) => {
+    try {
+        const bookclubId = Number(req.params.bookclubId);
+        const bookIsbn = req.params.bookIsbn;
+        const result = await bookclubService.addBookToBookclub(bookclubId, bookIsbn);
+        res.status(200).json(result);
+    } catch (error) {
+        console.log(error);
         next(error);
     }
 }); 
