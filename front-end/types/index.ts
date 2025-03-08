@@ -1,5 +1,5 @@
-type UserInput = {
-    id?: number;
+export type User = {
+    id: number;
     username: string;
     firstName: string;
     lastName: string;
@@ -7,35 +7,28 @@ type UserInput = {
     password: string;
 };
 
-type BookInput = {
+export type Book = {
     isbn: string;
     title: string;
     author: string;
     year: number;
     pages: number;
     description: string;
-}
-
-type BookclubInput = {
-    id?: number;
-    creator: UserInput;
-    name: string;
-    description: string;
-    members?: UserInput[];
-    books?: BookInput[];
 };
 
-type DiscussionInput = {
+export type Bookclub = {
+    id?: number;
+    creator: User;
+    name: string;
+    description: string;
+    members: Array<User>;
+    books?: Array<Book>;
+};
+
+export type Discussion = {
     id?: number;
     title: string;
     description: string;
-    postedBy: UserInput;
+    postedBy: User;
     datePosted: Date;
-}
-
-export {
-    UserInput,
-    BookInput,
-    BookclubInput,
-    DiscussionInput,
 };

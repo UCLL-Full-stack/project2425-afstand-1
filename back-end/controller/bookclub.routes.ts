@@ -96,6 +96,18 @@ bookclubRouter.post('/addBook/:bookclubId/:bookIsbn', async ( req:Request, res: 
     }
 }); 
 
+bookclubRouter.post('/addMember/:bookclubId/:memberId', async ( req:Request, res: Response, next: NextFunction ) => {
+    try {
+        const bookclubId = Number(req.params.bookclubId);
+        const memberId = req.params.memberId;
+        const result = await bookclubService.addMemberToBookclub(bookclubId, Number(memberId));
+        res.status(200).json(result);
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+}); 
+
 
 
 export  { bookclubRouter };

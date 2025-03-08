@@ -3,29 +3,53 @@ import { Bookclub } from "../model/bookclub";
 import { User } from "../model/user";
 
 const bookclubs: Bookclub[] = [
-    // new Bookclub({ 
-    //     id: 1,
-    //     creator: new User({
-    //         id: 1,
-    //         username: "kimberlyaustria",
-    //         firstName: "Kimberly",
-    //         lastName: "Austria",
-    //         email: "kimberlyaustria@example.com",
-    //         password: "test.P@ssword123"
-    //     }),
-    //     name: "The babies",
-    //     members: [
-    //         new User({
-    //             id: 1,
-    //             username: "kimberlyaustria",
-    //             firstName: "Kimberly",
-    //             lastName: "Austria",
-    //             email: "kimberlyaustria@example.com",
-    //             password: "test.P@ssword123"
-    //         })
-    //     ],
-    //     books: []
-    // })
+    new Bookclub({ 
+        id: 1,
+        creator: new User({
+            id: 1,
+            username: "kimberlyaustria",
+            firstName: "Kimberly",
+            lastName: "Austria",
+            email: "kimberlyaustria@example.com",
+            password: "test.P@ssword123"
+        }),
+        name: "The babies",
+        description:"lol",
+        members: [
+            new User({
+                id: 1,
+                username: "kimberlyaustria",
+                firstName: "Kimberly",
+                lastName: "Austria",
+                email: "kimberlyaustria@example.com",
+                password: "test.P@ssword123"
+            })
+        ],
+        books: []
+    }),
+    new Bookclub({ 
+        id: 2,
+        creator: new User({
+            id: 1,
+            username: "kimberlyaustria",
+            firstName: "Kimberly",
+            lastName: "Austria",
+            email: "kimberlyaustria@example.com",
+            password: "test.P@ssword123"
+        }),
+        name: "The babies",
+        members: [
+            new User({
+                id: 1,
+                username: "kimberlyaustria",
+                firstName: "Kimberly",
+                lastName: "Austria",
+                email: "kimberlyaustria@example.com",
+                password: "test.P@ssword123"
+            })
+        ],
+        books: []
+    }),
 ];
 
 
@@ -53,10 +77,20 @@ const addBook = (book: Book ): Bookclub | null => {
     return null;
 };
 
+const addMember = (member: User): User | null => {
+    const bookclub = bookclubs.find((bookclub) => bookclub.getId());
+    if (bookclub) { 
+        bookclub.addMemberToBookclub(member); 
+        return member;
+    }
+    return null;
+}
+
 export default {
     createBookclub,
     getAllBookclubs,
     getBookclubByName,
     getBookclubById,
     addBook,
+    addMember,
 };

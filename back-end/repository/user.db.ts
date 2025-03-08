@@ -9,6 +9,14 @@ const users: User[] = [
         email: 'kimberlyaustria@example.com',
         password: 'test.P@ssword123',  
     }),
+    new User({
+        id: 2,
+        username: "jerryaustria",
+        firstName: "Jerry",
+        lastName: "Austria",
+        email: "jerryaustria@example.com",
+        password: "test.P@ssword123"
+    }),
 ];
 
 const getUserById = ( id: number ): User | undefined => {

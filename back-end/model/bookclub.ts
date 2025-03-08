@@ -72,9 +72,14 @@ export class Bookclub {
     }
 
     addMemberToBookclub(member: User) {
-        if (!this.members.includes(member)) {
-            this.members.push(member);
+        // if (!this.members.includes(member)) {
+        //     this.members.push(member);
+        // }
+        const findUser = this.members.find((m) => m.getId() === member.getId());
+        if (findUser) {
+            throw new Error('User is already a member of this bookclub.')
         }
+        this.members.push(member);
     }
  
     addBookToBookclub(book: Book) {

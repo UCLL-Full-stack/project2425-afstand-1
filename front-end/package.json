@@ -21,6 +21,7 @@
     "use-interval": "^1.4.0"
   },
   "devDependencies": {
+    "@types/hoist-non-react-statics": "^3.3.6",
     "@types/node": "18.15.0",
     "@types/react-datepicker": "^4.15.0",
     "autoprefixer": "^10.4.16",
