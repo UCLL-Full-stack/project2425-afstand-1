@@ -22,7 +22,7 @@ type BookclubInput = {
     name: string;
     description: string;
     members?: UserInput[];
-    books?: BookInput[];
+    books?: BookclubBookInput[];
 };
 
 type DiscussionInput = {
@@ -33,9 +33,24 @@ type DiscussionInput = {
     datePosted: Date;
 }
 
+enum Status {
+    TO_READ = 'TO_READ',
+    CURRENTLY_READING = 'CURRENTLY_READING',
+    READ = 'READ'
+}
+
+type BookclubBookInput = {
+    book: BookInput;
+    status: Status;
+    startDate?: Date;
+    finishDate?: Date;
+}
+
 export {
     UserInput,
     BookInput,
     BookclubInput,
     DiscussionInput,
+    Status,
+    BookclubBookInput,
 };
