@@ -5,33 +5,17 @@ import BookclubService from "@services/BookclubService";
 import { Bookclub } from "@types";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import styles from '@styles/home.module.css';
 
 const Bookclubs: React.FC = () => {
     const [bookclubs, setBookclubs] = useState<Array<Bookclub>>();
-    const [selectedBookclub, setSelectedBookclub] = useState<Bookclub>();
+    const [selectBookclub, setSelectedBookclub] = useState<Bookclub>();
     
     const getBookclubs = async () => {
         const response = await BookclubService.getAllBookclubs();
         const bookclubs = await response.json();
         setBookclubs(bookclubs);
     }
-
-    // const getBookclubs = async () => { 
-    //     try { 
-    //         const response = await BookclubService.getAllBookclubs(); 
-    //         console.log('Response:', response); 
-
-    //         // Parse JSON 
-    //         const bookclubs = await response.json(); 
-    //         console.log('Bookclubs:', bookclubs); 
-            
-    //         // Update state 
-    //     setBookclubs(bookclubs); 
-    // } catch (error) 
-    //     { console.error('Error fetching bookclubs:', error); 
-
-    //     } 
-    // }
 
     useEffect(() => {
         getBookclubs();
@@ -43,31 +27,36 @@ const Bookclubs: React.FC = () => {
                 <title>Bookclubs</title>
             </Head>
             <Header />
-            <main>
+            <main className={styles.main}>
                 <h1>Bookclubs</h1>
-                <section>
-                    {bookclubs && (
-                        <BookclubOverviewTable
-                            bookclubs={bookclubs}
-                            selectBookclub={setSelectedBookclub}
-                        />
-                    )}
-                </section>
-
-                {selectedBookclub && (
-                    <section>
-                        <h2>
-                            {selectedBookclub.name}:
-                        </h2>
-                        {selectedBookclub && (
-                            <BookclubInfo bookclub={selectedBookclub} />
+                <div className={styles.grid} style={{ gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
+                    <section className={styles.card} style={{ background: 'white', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+                        {bookclubs && (
+                            <BookclubOverviewTable
+                                bookclubs={bookclubs}
+                                selectBookclub={setSelectedBookclub}
+                                selectedBookclub={selectBookclub}
+                            />
                         )}
                     </section>
-                )}
+
+                    {selectBookclub && (
+                        <section className={styles.card} style={{ 
+                            background: 'white', 
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                            position: 'sticky',
+                            top: '2rem'
+                        }}>
+                            <h2>
+                                {selectBookclub.name}
+                            </h2>
+                            <BookclubInfo bookclub={selectBookclub} />
+                        </section>
+                    )}
+                </div>
             </main>
         </>
     );
 };
 
 export default Bookclubs;
-

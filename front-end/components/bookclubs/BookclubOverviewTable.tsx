@@ -4,9 +4,10 @@ import { Bookclub } from "@types";
 type Props = {
     bookclubs: Array<Bookclub>;
     selectBookclub: (bookclub: Bookclub) => void;
+    selectedBookclub?: Bookclub | null;
 };
 
-const BookclubOverviewTable: React.FC<Props> = ({bookclubs,selectBookclub,}: Props) => {
+const BookclubOverviewTable: React.FC<Props> = ({bookclubs,selectBookclub,selectedBookclub}: Props) => {
     return (
         <>
             {bookclubs && (
@@ -24,6 +25,7 @@ const BookclubOverviewTable: React.FC<Props> = ({bookclubs,selectBookclub,}: Pro
                                 key={index}
                                 onClick={() => selectBookclub(bookclub)}
                                 role="button"
+                                className={selectedBookclub?.id === bookclub.id ? 'table-active' : ''}
                             >
                                 <td>{bookclub.name}</td>
                                 <td>{bookclub.description}</td>
