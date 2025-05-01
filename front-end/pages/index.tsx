@@ -16,24 +16,29 @@ const Home: React.FC = () => {
                 <link rel="icon" href="/../public/images/bookmateslogo.png" />
             </Head>
             <Header></Header>
-            <main>
-                <span>
-                    <Image
-                        src="/../public/images/bookmateslogo.png"
-                        alt="BookMates Logo"
-                        width={50}
-                        height={50}
-                    />
-                    <h1>BookMates</h1>
-                </span>
+            <main className={styles.main}>
+                <div className={styles.center}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <h1>Home</h1>
+                    </span>
+                </div>
 
-                <div>
-                    <p>
-                    Welcome to BookMates, the ultimate destination for book lovers looking for reading buddies!
-                    Discover vibrant bookclubs where readers from around the world come together to explore, discuss, and celebrate the magic of books. Whether you're into page-turning thrillers, heartfelt romances, or thought-provoking non-fiction, you'll find a space to connect.
-                    <br />
-                    Browse and join existing groups or - even better - create your own bookclub! Share reviews, engage in lively discussions, and bring some fun along your reading-journey.
-                    </p>
+                <div className={styles.grid}>
+                    <div className={styles.card} style={{ display: 'flex', justifyContent: 'center' }}>
+                        <p style={{ 
+                            fontSize: '1.1rem', 
+                            lineHeight: '1.6',
+                            color: '#333',
+                            maxWidth: '800px',
+                            textAlign: 'center',
+                            opacity: '1'
+                        }}>
+                            Welcome to BookMates, the ultimate destination for book lovers looking for reading buddies!
+                            Discover vibrant bookclubs where readers from around the world come together to explore, discuss, and celebrate the magic of books. Whether you're into page-turning thrillers, heartfelt romances, or thought-provoking non-fiction, you'll find a space to connect.
+                            <br /><br />
+                            Browse and join existing groups or - even better - create your own bookclub! Share reviews, engage in lively discussions, and bring some fun along your reading-journey.
+                        </p>
+                    </div>
                 </div>
             </main>
         </>
