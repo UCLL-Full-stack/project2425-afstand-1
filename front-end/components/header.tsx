@@ -6,7 +6,7 @@ const Header: React.FC = () => {
         <header>
             <a>
                 {" "}
-                Bookclubs App
+                BookMates
             </a>
             <nav>
                 <Link href="/">

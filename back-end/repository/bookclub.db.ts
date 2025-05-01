@@ -14,7 +14,7 @@ const bookclubs: Bookclub[] = [
             password: "test.P@ssword123"
         }),
         name: "The babies",
-        description:"lol",
+        description:"Join our book club for engaging discussions, fresh perspectives, and a shared love of reading. Each month, we dive into a new title—from fiction to nonfiction—and come together to explore themes, characters, and ideas in a welcoming, relaxed atmosphere. Whether you're a casual reader or a literary enthusiast, all are welcome!",
         members: [
             new User({
                 id: 1,
@@ -25,7 +25,7 @@ const bookclubs: Bookclub[] = [
                 password: "test.P@ssword123"
             })
         ],
-        books: []
+        books: [],
     }),
     new Bookclub({ 
         id: 2,
@@ -37,7 +37,7 @@ const bookclubs: Bookclub[] = [
             email: "kimberlyaustria@example.com",
             password: "test.P@ssword123"
         }),
-        name: "The babies",
+        name: "The Goonies",
         members: [
             new User({
                 id: 1,
