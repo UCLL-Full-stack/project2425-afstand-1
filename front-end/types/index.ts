@@ -14,6 +14,7 @@ export type Book = {
     year: number;
     pages: number;
     description: string;
+    status: 'reading' | 'completed' |'read' | 'recent'
 };
 
 export type Bookclub = {
