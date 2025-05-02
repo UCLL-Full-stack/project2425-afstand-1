@@ -8,6 +8,7 @@ import { bookclubRouter } from './controller/bookclub.routes';
 import { userRouter } from './controller/user.routes';
 import { bookRouter } from './controller/book.routes';
 import { discussionRouter } from './controller/discussion.routes';
+import { bookclubBookRouter } from './controller/bookclubBook.routes';
 
 const app = express();
 dotenv.config();
@@ -20,6 +21,7 @@ app.use('/bookclubs', bookclubRouter);
 app.use('/users', userRouter);
 app.use('/books', bookRouter);
 app.use('/discussions', discussionRouter);
+app.use('/bookclubBooks', bookclubBookRouter);
 
 app.get('/status', (req, res) => {
     res.json({ message: 'Back-end is running...' });

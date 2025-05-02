@@ -4,35 +4,58 @@ import { Bookclub } from "./bookclub";
 
 
 export class BookclubBook {
-    private book: Book;
-    private bookclub: Bookclub;
+    private id: number;
+    private book: string;
+    private bookclub: number;
     private status: Status;
     private startDate?: Date;
     private finishDate?: Date;
 
-    constructor(bookclubbook: {
-        book: Book;
-        bookclub: Bookclub;
+    constructor(bookclubBook: {
+        id: number;
+        book: string;
+        bookclub: number;
         status: Status;
         startDate?: Date;
         finishDate?: Date;
     }) {
-        this.book = bookclubbook.book;
-        this.bookclub = bookclubbook.bookclub;
-        this.status = bookclubbook.status;
-        this.startDate = bookclubbook.startDate;
-        this.finishDate = bookclubbook.finishDate;
+        this.validate(bookclubBook);
+
+        this.id = bookclubBook.id;
+        this.book = bookclubBook.book;
+        this.bookclub = bookclubBook.bookclub;
+        this.status = bookclubBook.status;
+        this.startDate = bookclubBook.startDate;
+        this.finishDate = bookclubBook.finishDate;
     }
 
-    validate(bookclubBook: {}) {
+    validate(bookclubBook: { id: number; book: string; bookclub: number; status: Status }) {
+        if (!bookclubBook.id) {
+            throw new Error("ID is required");
+        }
 
+        if (!bookclubBook.book) {
+            throw new Error("Book is required");
+        }
+
+        if (!bookclubBook.bookclub) {
+            throw new Error("Bookclub is required");
+        }
+
+        if (!bookclubBook.status) {
+            throw new Error("Status is required");
+        }
     }
 
-    getBook() : Book {
+    getId(): number {
+        return this.id;
+    }
+
+    getBook() : string {
         return this.book;
     }
 
-    getBookclub() : Bookclub {
+    getBookclub() : number {
         return this.bookclub;
     }
 
@@ -50,6 +73,7 @@ export class BookclubBook {
 
     equals(bookclubBook: BookclubBook): boolean {
         return (
+            this.id === bookclubBook.getId() &&
             this.book === bookclubBook.getBook() &&
             this.bookclub === bookclubBook.getBookclub() &&
             this.status === bookclubBook.getStatus() &&
