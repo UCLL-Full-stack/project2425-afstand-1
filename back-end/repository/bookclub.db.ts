@@ -68,8 +68,8 @@ const getBookclubById = ( id: number ): Bookclub | undefined => {
     return bookclubs.find((bookclub) => bookclub.getId() === id);
 }; 
 
-const addBook = (book: Book ): Bookclub | null => {
-    const bookclub = bookclubs.find((bookclub) => bookclub.getId());
+const addBook = (book: Book, bookclubId: number ): Bookclub | null => {
+    const bookclub = bookclubs.find((bookclub) => bookclub.getId() === bookclubId);
     if (bookclub) { 
         bookclub.addBookToBookclub(book); 
         return bookclub;

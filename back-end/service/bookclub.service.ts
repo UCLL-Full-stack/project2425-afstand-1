@@ -44,7 +44,7 @@ const addBookToBookclub = ( bookclubId: number, bookIsbn: string ): Bookclub | n
     if (!book) {
         throw new Error(`Book with ISBN ${bookIsbn} not found`);
     }
-    return bookclubDb.addBook(book);
+    return bookclubDb.addBook(book, bookclubId);
 };
 
 const addMemberToBookclub = ( bookclubId: number, memberId: number ): User | null => {
