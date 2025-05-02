@@ -40,7 +40,9 @@ enum Status {
 }
 
 type BookclubBookInput = {
-    book: BookInput;
+    id: number;
+    book: string;
+    bookclub: number;
     status: Status;
     startDate?: Date;
     finishDate?: Date;

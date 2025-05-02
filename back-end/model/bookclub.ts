@@ -4,7 +4,7 @@ import { BookclubBook } from "./bookclubBook";
 import { User } from "./user";
 
 export class Bookclub {
-    private id?: number;
+    private id: number;
     private creator: User;
     private name: string;
     private description?: string;
@@ -12,7 +12,7 @@ export class Bookclub {
     private books: BookclubBook[];
 
     constructor(bookclub: {
-        id?: number;
+        id: number;
         creator: User;
         name: string;
         description?: string;
@@ -85,13 +85,14 @@ export class Bookclub {
     }
  
     addBookToBookclub(book: Book) {
-        const findBook = this.books.find((b) => b.getBook().getIsbn() === book.getIsbn());
+        const findBook = this.books.find((b) => b.getBook() === book.getIsbn());
         if (findBook) {
             throw new Error('Book has already been assigned to this bookclub.');
         }
         const bookclubBook = new BookclubBook({
-            book: book,
-            bookclub: this,
+            id: 1,
+            book: book.getIsbn(),
+            bookclub: this.id,
             status: Status.TO_READ,
         });
         this.books.push(bookclubBook);

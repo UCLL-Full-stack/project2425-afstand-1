@@ -6,10 +6,12 @@ import userDb from "../repository/user.db";
 import { BookclubInput } from "../types";
 
 const createBookclub = ({
+    id,
     creator: userInput,
     name,
     description,
 }: BookclubInput): Bookclub => {
+    if (!id) throw new Error('Bookclub id is required');
     if (!userInput.id) throw new Error('Creator id is required');
     if (!name) throw new Error('Name is required');
 
@@ -19,7 +21,7 @@ const createBookclub = ({
     const existingBookclub = bookclubDb.getBookclubByName(name);
     if (existingBookclub) throw new Error('A bookclub with this name already exists.');
     
-    const bookclub = new Bookclub({ creator, name, description });
+    const bookclub = new Bookclub({ id, creator, name, description });
     return bookclubDb.createBookclub(bookclub);
 };
 
