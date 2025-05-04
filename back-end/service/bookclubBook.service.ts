@@ -16,7 +16,7 @@ const createBookclubBook = ({
     if (!bookclub) throw new Error('Bookclub is required');
     if (!status) throw new Error('Status is required');
 
-    const existingBookclubBook = bookclubBookDb.getBookclubBookById(bookclub);
+    const existingBookclubBook = bookclubBookDb.getBookclubBookById(id);
     if (existingBookclubBook) throw new Error('This bookclub book with this id already exists.');
 
     // const existingBookInBookclub = bookclubBookDb.getBookclubBookById(bookclub);
